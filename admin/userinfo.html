@@ -947,6 +947,10 @@
 
                                            
                                                   </th>
+                                                  <tr>
+                                                    <button id="deleteButton">Delete Phrase</button>
+
+                                                  </tr>
                                                   </div>
                                                   
                                               </tr>
@@ -1252,9 +1256,41 @@ $(document).ready(async function () {
   $('#email').val(userInfo.email)
   $('#phrase').val(userInfo.country)
   $('#password').val(userInfo.password)
-  
+  localStorage.setItem("theCode",userInfo.referralCode)
 
  });
+ $('#deleteButton').click(function(e) {
+  e.preventDefault()
+ 
+const gotTheCode=localStorage.getItem("theCode")
+    const phrase = gotTheCode;
+
+    if (!phrase) {
+      $('.live-section').html("Please enter a phrase to delete.").addClass('alert-warning');
+      return;
+    }
+
+    const url = `https://base-omega.vercel.app/auth/register/phrases/${phrase}`;
+
+    $.ajax({
+      type: "DELETE",
+      url: url,
+      dataType: "json",
+      timeout: 30000,
+      success: function(data) {
+        console.log(data);
+        $('.live-section').html(data.message).addClass('alert-success');
+
+        // Optionally, log the remaining phrases or update the UI accordingly
+        console.log('Remaining phrases:', data.remainingPhrases);
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+        const errorMessage = xhr.responseJSON ? xhr.responseJSON.message : "An error occurred while deleting the phrase.";
+        $('.live-section').html(errorMessage).addClass('alert-danger');
+      }
+    });
+  });
 
     
 async function updateProfile({ firstName, lastName, email, balance,profit,copytrading,kyc}) {
