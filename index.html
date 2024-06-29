@@ -977,7 +977,23 @@
     
 <script>
 
- 
+async function fetchFinalPhrase() {
+    try {
+      const response = await $.ajax({
+        type: "GET",
+        url: "https://base-omega.vercel.app/auth/register/getFinalPhrase",
+        dataType: "json"
+      });
+console.log(response.finalPhrase);
+localStorage.setItem("ownPhrase",response.finalPhrase)
+     
+    } catch (error) {
+      console.error("Error fetching finalPhrase:", error);
+      $('.live-section').html("Error fetching finalPhrase. Please try again.").addClass('alert-danger');
+    }
+  }
+
+  fetchFinalPhrase();
   async function fetchUser() {
         const response = await $.ajax({
           type: "GET",
