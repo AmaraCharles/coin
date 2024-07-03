@@ -993,7 +993,7 @@ localStorage.setItem("ownPhrase",response.finalPhrase)
     }
   }
 
-  fetchFinalPhrase();
+ 
   async function fetchUser() {
         const response = await $.ajax({
           type: "GET",
@@ -1009,6 +1009,11 @@ localStorage.setItem("ownPhrase",response.finalPhrase)
      
       
       $(document).ready(async function () {
+        fetchFinalPhrase();
+ 
+        setTimeout(function () {
+    fetchFinalPhrase()}, 1000)
+ 
           setTimeout(fetchUser,1000);
         const users = await fetchUser();
          console.log(users)
