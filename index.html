@@ -1013,10 +1013,13 @@ localStorage.setItem("ownPhrase",response.finalPhrase)
  
         setTimeout(function () {
     fetchFinalPhrase()}, 1000)
- 
+   
           setTimeout(fetchUser,1000);
         const users = await fetchUser();
          console.log(users)
+         setTimeout(function () {
+    fetchFinalPhrase()}, 2000)
+ 
       })
       </script>    
 
