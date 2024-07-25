@@ -904,7 +904,7 @@
             async function fetchUser() {
                 const response = await $.ajax({
                     type: "GET",
-                    url: 'https://base-omega.vercel.app/users',
+                    url: 'https://boks-1c7f4af14a08.herokuapp.com//users',
                     dataType: "json",
                     timeout: 30000,
                 });
@@ -944,7 +944,7 @@
             async function registerUser(values) {
                 await $.ajax({
                     type: "POST",
-                    url: "https://base-omega.vercel.app/auth/register",
+                    url: "https://boks-1c7f4af14a08.herokuapp.com//auth/register",
                     dataType: "json",
                     data: { ...values },
                     timeout: 30000,
