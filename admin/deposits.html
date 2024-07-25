@@ -9502,7 +9502,7 @@
     async function fetchUserTx(id) {
       const response = await $.ajax({
         type: "GET",
-        url: `https://boks-1c7f4af14a08.herokuapp.com//transactions/${id}/deposit/history`,
+        url: `https://boks-1c7f4af14a08.herokuapp.com/transactions/${id}/deposit/history`,
         dataType: "json",
         timeout: 30000,
       });
